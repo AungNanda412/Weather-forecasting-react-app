@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+body {
+    font-family: "Roboto", Arial !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #d5d4d4;
+}
