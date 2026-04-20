@@ -21,7 +21,6 @@ const Search = ({ onSearchChange }: Props) => {
     if (searchData) {
       onSearchChange(searchData);
     }
-    //test git
   };
 
   return (
