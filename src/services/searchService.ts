@@ -4,7 +4,7 @@ export const weatherApiUrl = `https://api.openweathermap.org/data/2.5`;
 
 export const weatherApiKey = "51eecac8cdafc754c007cdb06c0be92f";
 
-export const weatherGeoApiUrl = "http://api.openweathermap.org/geo/1.0";
+export const weatherGeoApiUrl = "https://api.openweathermap.org/geo/1.0";
 
 export const geoApiOptions = {
   method: "GET",
