@@ -1,4 +1,4 @@
-import { weatherApiKey } from "../../../services/searchService";
+import { weatherApiKey, weatherGeoApiUrl } from "../../../services/searchService";
 
 type loadOptionTypes = {
   options: {
@@ -23,7 +23,7 @@ function useSearch() {
 
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=10&appid=${weatherApiKey}`,
+        `${weatherGeoApiUrl}/direct?q=${inputValue}&limit=10&appid=${weatherApiKey}`,
       );
       const result = await response.json();
       console.log("result:", result);
