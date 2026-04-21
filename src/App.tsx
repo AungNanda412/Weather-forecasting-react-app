@@ -8,19 +8,20 @@ import {
   weatherApiUrl,
   weatherGeoApiUrl,
 } from "./services/searchService";
-import type { WeatherResponse } from "./types/WeatherTypes";
+import type { ForecastResponse, WeatherResponse } from "./types/WeatherTypes";
 import { Loader2 } from "lucide-react";
+import ForecastWeather from "./components/forecast/ForecastWeather";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState<WeatherResponse>();
-  const [forecast, setForecast] = useState();
+  const [forecast, setForecast] = useState<ForecastResponse>();
 
 useEffect(() => {
   const fetchDefaultWeather = async () => {
     try {
       const { curLat, curLon } = await getCurrentLocation();
 
-      // ✅ Step 1: get city name
+      
       const geoRes = await fetch(
         `${weatherGeoApiUrl}/reverse?lat=${curLat}&lon=${curLon}&limit=1&appid=${weatherApiKey}`
       );
@@ -32,7 +33,7 @@ useEffect(() => {
           ? `${geoData[0].name}, ${geoData[0].country}`
           : "Your Location";
 
-      // ✅ Step 2: fetch weather
+      
       const currentWeatherFetch = await fetch(
         `${weatherApiUrl}/weather?lat=${curLat}&lon=${curLon}&appid=${weatherApiKey}&units=metric`
       );
@@ -107,9 +108,10 @@ useEffect(() => {
   console.log(forecast);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto lg:px-10">
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather ? <CurrentWeather data={currentWeather} /> : <div className="flex justify-center items-center mt-30"><Loader2 size={35} className="animate-spin" /></div> }
+      {forecast && <ForecastWeather data={forecast} />}
     </div>
   );
 }

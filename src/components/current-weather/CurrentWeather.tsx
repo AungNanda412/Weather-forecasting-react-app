@@ -14,7 +14,7 @@ const CurrentWeather = ({ data }: Props) => {
         px-6 py-5 text-white
       "
     >
-      {/* Top Section */}
+      
       <div className="flex justify-between items-center mb-4">
         <div>
           <p className="text-xl font-semibold">{data?.city}</p>
@@ -23,8 +23,8 @@ const CurrentWeather = ({ data }: Props) => {
         <img className="w-20 h-20" src={`/icons/${data?.weather[0].icon}.png`} alt="weather" />
       </div>
 
-      {/* Bottom Section */}
-      <div className="flex items-center gap-4">
+      
+      <div className="flex items-center gap-10">
         <p className="text-6xl font-bold">{Math.round(data?.main.temp)}°C</p>
 
         <div className="flex-1 text-sm space-y-1">
